@@ -1,9 +1,10 @@
 body {
-  background-image: url("../../assets/StartBackground.jpeg");
-  background-size: cover;
+  margin: 0;
 }
 
 .Wrapper {
+  background-image: url("../../assets/StartBackground.jpeg");
+  background-size: cover;
   height: 100vh;
   display: flex;
   flex-direction: column;
