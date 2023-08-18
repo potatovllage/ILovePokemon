@@ -1,0 +1,22 @@
+.Wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e55858;
+  width: 100%;
+  height: 80px;
+}
+
+.HeaderContainer {
+  margin: auto;
+  width: 1000px;
+}
+
+.LogoContainer {
+  cursor: pointer;
+  display: flex;
+
+  > img {
+    margin-right: 5px;
+  }
+}

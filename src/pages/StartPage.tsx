@@ -1,7 +1,7 @@
 import style from "../styles/pages/start.module.scss";
 import bind from "../styles/cx";
-import ball from "../assets/MonsterBall.png";
-import logo from "../assets/logo.png";
+import ball from "../assets/image/MonsterBall.png";
+import logo from "../assets/image/logo.png";
 import { useNavigate } from "react-router-dom";
 
 const cx = bind(style);
