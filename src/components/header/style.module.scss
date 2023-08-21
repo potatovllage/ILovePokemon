@@ -1,3 +1,5 @@
+@import "../../styles/mixin";
+
 .Wrapper {
   display: flex;
   justify-content: center;
@@ -7,9 +9,25 @@
   height: 80px;
 }
 
-.HeaderContainer {
-  margin: auto;
-  width: 1000px;
+@include mobile {
+  .HeaderContainer {
+    margin: auto;
+    width: 340px;
+  }
+}
+
+@include tablet {
+  .HeaderContainer {
+    margin: auto;
+    width: 800px;
+  }
+}
+
+@include desktop {
+  .HeaderContainer {
+    margin: auto;
+    width: 1400px;
+  }
 }
 
 .LogoContainer {
