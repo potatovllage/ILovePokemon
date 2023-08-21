@@ -1,4 +1,4 @@
 export interface ChangeLanguageState {
-  language: boolean;
-  setChanegLanguage: () => void;
+  language: string;
+  setChanegLanguage: (lang: string) => void;
 }
