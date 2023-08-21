@@ -7,10 +7,14 @@
   background-color: #e55858;
   width: 100%;
   height: 80px;
+  margin-bottom: 40px;
 }
 
 @include mobile {
   .HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: auto;
     width: 340px;
   }
@@ -18,6 +22,9 @@
 
 @include tablet {
   .HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: auto;
     width: 800px;
   }
@@ -25,6 +32,9 @@
 
 @include desktop {
   .HeaderContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: auto;
     width: 1400px;
   }
@@ -36,5 +46,27 @@
 
   > img {
     margin-right: 5px;
+  }
+}
+
+.ChangeLanguageContainer {
+  display: flex;
+  align-items: center;
+
+  > img {
+    margin-right: 5px;
+  }
+
+  > p {
+    margin: 0 5px 0 5px;
+  }
+}
+
+.Language {
+  cursor: pointer;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
   }
 }
