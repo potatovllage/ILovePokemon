@@ -1,11 +1,36 @@
+@import "../../styles/mixin";
 // type navigation
 
-.NavigationContainer {
-  margin-top: 80px;
-  display: flex;
-  flex-wrap: wrap;
-  padding-top: 1.75rem;
-  padding-bottom: 1.75rem;
+@include mobile {
+  .NavigationContainer {
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+@include tablet {
+  .NavigationContainer {
+    width: 580px;
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
+}
+
+@include desktop {
+  .NavigationContainer {
+    width: 1300px;
+    margin-top: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 1.75rem;
+    padding-bottom: 1.75rem;
+  }
 }
 
 // type label
