@@ -1,0 +1,76 @@
+@import "../../../styles/mixin";
+
+// main list
+
+@include mobile {
+  .ListWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@include tablet {
+  .ListWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+@include desktop {
+  .ListWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+}
+
+// item
+
+@include mobile {
+  .ItemContainer {
+    border: 1px solid #e8e8e8;
+    width: 250px;
+    cursor: pointer;
+    padding: 14px;
+    height: 250px;
+    border-radius: 1rem;
+    background: white;
+  }
+}
+
+@include tablet {
+  .ItemContainer {
+    border: 1px solid #e8e8e8;
+    width: 250px;
+    cursor: pointer;
+    padding: 14px;
+    height: 250px;
+    border-radius: 1rem;
+    background: white;
+  }
+}
+
+@include desktop {
+  .ItemContainer {
+    border: 1px solid #e8e8e8;
+    cursor: pointer;
+    width: 280px;
+    padding: 14px;
+    height: 250px;
+    border-radius: 1rem;
+    background: white;
+
+    &:hover {
+      transition: 0.5s;
+      box-shadow: 1px 1px 8px 1px rgba(0, 0, 0, 0.25);
+    }
+  }
+}
