@@ -1,7 +1,7 @@
 import style from "../styles/pages/main.module.scss";
 import bind from "../styles/cx";
-import Header from "../components/header";
 import TypeNavigation from "../components/navigation/TypeNavigation";
+import Header from "../components/header";
 
 const cx = bind(style);
 

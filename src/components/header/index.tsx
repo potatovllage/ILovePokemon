@@ -9,7 +9,7 @@ const cx = bind(style);
 
 function Header() {
   const naviagate = useNavigate();
-  const { setChanegLanguage, language } = useChangeLanguage();
+  const { setChanegLanguage } = useChangeLanguage();
 
   return (
     <header className={cx(style.Wrapper)}>
