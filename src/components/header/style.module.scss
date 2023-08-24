@@ -1,6 +1,7 @@
 @import "../../styles/mixin";
 
 .Wrapper {
+  z-index: 99;
   position: fixed;
   top: 0;
   display: flex;

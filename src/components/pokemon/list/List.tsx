@@ -15,7 +15,6 @@ function MainList() {
       <Item />
       <Item />
       <Item />
-      <Item />
     </div>
   );
 }
