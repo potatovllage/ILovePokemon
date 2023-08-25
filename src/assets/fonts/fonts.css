@@ -1,0 +1,10 @@
+@font-face {
+  font-family: "galmuri9";
+  font-style: normal;
+  font-weight: normal;
+  src: url("./Galmuri9.woff") format("woff");
+}
+
+body {
+  font-family: "galmuri9";
+}
