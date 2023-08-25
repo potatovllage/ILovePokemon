@@ -46,9 +46,14 @@
 .LogoContainer {
   cursor: pointer;
   display: flex;
+  align-items: center;
 
   > img {
     margin-right: 5px;
+  }
+
+  > h1 {
+    color: #f0f0e6;
   }
 }
 
@@ -61,6 +66,7 @@
   }
 
   > p {
+    color: #f0f0e6;
     margin: 0 5px 0 5px;
   }
 }
