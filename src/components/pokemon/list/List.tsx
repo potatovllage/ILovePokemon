@@ -8,12 +8,10 @@ const cx = bind(style);
 function MainList() {
   const { data: list } = usePokemonList();
 
-  console.log(list);
-
   return (
     <div className={cx(style.ListWrapper)}>
-      {list?.map((item, idx) => (
-        <Item key={item.name} name={item.name} pokemonNumber={idx + 1} />
+      {list?.map((item) => (
+        <Item key={item.name} name={item.name} />
       ))}
     </div>
   );

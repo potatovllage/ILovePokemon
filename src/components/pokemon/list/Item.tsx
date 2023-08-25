@@ -3,22 +3,16 @@ import bind from "../../../styles/cx";
 import monsterball from "../../../assets/image/MonsterBall.png";
 import { PokemonType } from "../../../types/pokemon";
 import TypeLabel from "../../navigation/TypeLable";
-import { usePokemonImage } from "../../../hooks/usePokemonList";
+import { usePokemonListDetail } from "../../../hooks/usePokemonList";
 
-interface Props {
+interface PokemonNameProps {
   name: string;
-  pokemonNumber: number;
 }
 
 const cx = bind(style);
 
-export const typeListAll = [
-  { slot: 0, type: { name: "normal", url: "" } },
-  { slot: 0, type: { name: "fighting", url: "" } },
-];
-
-function Item({ name, pokemonNumber }: Props) {
-  const { data: pokemonImg } = usePokemonImage(name);
+function Item({ name }: PokemonNameProps) {
+  const { data: pokemonItem } = usePokemonListDetail(name);
 
   return (
     <div className={cx(style.ItemContainer)}>
@@ -27,12 +21,17 @@ function Item({ name, pokemonNumber }: Props) {
           <img height={20} src={monsterball} alt="monster ball" />
           <h1>{name}</h1>
         </div>
-        <p className={cx(style.PokemonNumber)}>No.{pokemonNumber}</p>
+        <p className={cx(style.PokemonNumber)}>No.{pokemonItem?.id}</p>
       </div>
       <div className={cx(style.PokemonItemContent)}>
-        <img width={80} height={120} src={pokemonImg} alt={pokemonImg} />
+        <img
+          width={80}
+          height={120}
+          src={String(pokemonItem?.sprites.front_default)}
+          alt={pokemonItem?.name}
+        />
         <div className={cx(style.PokemonTypeLabel)}>
-          {typeListAll.map((type: PokemonType, index: number) => (
+          {pokemonItem?.types.map((type: PokemonType, index: number) => (
             <TypeLabel key={index} typeData={type} />
           ))}
         </div>

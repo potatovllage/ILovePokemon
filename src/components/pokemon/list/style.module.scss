@@ -1,7 +1,6 @@
 @import "../../../styles/mixin";
 
 // main list
-
 @include mobile {
   .ListWrapper {
     width: 100%;
@@ -9,6 +8,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    padding-bottom: 3rem;
   }
 }
 
@@ -19,6 +19,7 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    padding-bottom: 3rem;
   }
 }
 
@@ -29,11 +30,11 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 20px;
+    padding-bottom: 3rem;
   }
 }
 
 // item
-
 @include mobile {
   .ItemContainer {
     border: 1px solid #e8e8e8;
@@ -118,6 +119,6 @@
   }
 
   > div {
-    padding: 1.25rem;
+    padding-top: 1.25rem;
   }
 }
