@@ -4,10 +4,7 @@ export interface PokemonBasic {
 }
 
 export interface PokemonAll {
-  count: number;
-  next: string;
-  previous: string | null;
-  results: PokemonBasic;
+  results: PokemonBasic[];
 }
 
 export interface PokemonAblities {
