@@ -27,3 +27,13 @@ export interface PokemonListDetails {
 export interface PokemonLanguage {
   language: PokemonBasic;
 }
+export interface PokemonSpecies {
+  id: number;
+  name: string;
+  names: {
+    name: string;
+    language: {
+      name: string;
+    };
+  }[];
+}

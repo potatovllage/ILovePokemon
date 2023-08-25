@@ -11,7 +11,7 @@ function MainList() {
   return (
     <div className={cx(style.ListWrapper)}>
       {list?.map((item) => (
-        <Item key={item.name} name={item.name} />
+        <Item key={item.name} englishName={item.name} />
       ))}
     </div>
   );
