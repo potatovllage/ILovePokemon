@@ -8,6 +8,7 @@ import {
   usePokemonListWithSpcies,
 } from "../../../hooks/usePokemonList";
 import { useChangeLanguage } from "../../../store";
+import { useNavigate } from "react-router-dom";
 
 interface PokemonNameProps {
   englishName: string;
@@ -20,12 +21,17 @@ function Item({ englishName }: PokemonNameProps) {
   const { data: pokemonItem } = usePokemonListDetail(englishName);
   const { data: pokemonSpcies } = usePokemonListWithSpcies(pokemonItem?.id!);
 
+  const navigage = useNavigate();
+
   const koreanNameData = pokemonSpcies?.names?.find(
     (nameData: any) => nameData.language.name === "ko"
   );
 
   return (
-    <div className={cx(style.ItemContainer)}>
+    <div
+      onClick={() => navigage(`/pokemon/${pokemonItem?.id}`)}
+      className={cx(style.ItemContainer)}
+    >
       <div className={cx(style.ItemHeader)}>
         <div className={cx(style.PokemonInfo)}>
           <img height={30} src={monsterball} alt="monster ball" />

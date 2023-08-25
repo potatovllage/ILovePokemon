@@ -7,7 +7,7 @@ import {
 } from "../types/pokemon";
 
 export const getPokemonList = async (): Promise<PokemonBasic[]> => {
-  const { data } = await api.get<PokemonAll>("pokemon?limit=151");
+  const { data } = await api.get<PokemonAll>("pokemon?limit=493");
   return data.results;
 };
 

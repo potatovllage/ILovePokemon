@@ -1,0 +1,31 @@
+.Wrapper {
+  margin-top: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  > h1 {
+    text-align: center;
+    font-size: 24px;
+  }
+
+  > p {
+    text-align: center;
+    padding: 10px;
+  }
+}
+
+.PokemonImage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 120px;
+  height: 120px;
+  border: 4px solid gray;
+}
+
+.PokemonTypeLabel {
+  display: flex;
+  align-items: center;
+}
