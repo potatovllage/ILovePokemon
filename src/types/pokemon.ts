@@ -28,25 +28,42 @@ export interface PokemonLanguage {
   language: PokemonBasic;
 }
 
+export interface PokemonNameData {
+  name: string;
+  language: { name: string };
+}
+
+export interface PokemonFlavorTextData {
+  flavor_text: string;
+  language: { name: string };
+}
+
+export interface PokemonGeneraData {
+  genus: string;
+  language: { name: string };
+}
+
 export interface PokemonSpecies {
   id: number;
   name: string;
-  names: {
+  names: PokemonNameData[];
+  flavor_text_entries: PokemonFlavorTextData[];
+  genera: PokemonGeneraData[];
+  evolution_chain: {
+    url: string;
+  };
+}
+export interface PokemonEvolvesProperties {
+  name: string;
+  level: number;
+  image?: string;
+  number?: string;
+}
+
+export interface EvolvesProperties {
+  species: {
     name: string;
-    language: {
-      name: string;
-    };
-  }[];
-  flavor_text_entries: {
-    flavor_text: string;
-    language: {
-      name: string;
-    };
-  }[];
-  genera: {
-    genus: string;
-    language: {
-      name: string;
-    };
-  }[];
+  };
+  evolution_details: [{ min_level: number }];
+  evolves_to: EvolvesProperties[];
 }

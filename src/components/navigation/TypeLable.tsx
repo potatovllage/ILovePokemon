@@ -1,6 +1,6 @@
 import { ConvertedText } from "../../utils/pokemonTypeText";
 import { BackgroundColor } from "../../utils/pokemonTypeColor";
-import { PokemonType } from "../../types/pokemon";
+import type { PokemonType } from "../../types/pokemon";
 import { useNavigate } from "react-router-dom";
 import { useChangeLanguage } from "../../store";
 import bind from "../../styles/cx";

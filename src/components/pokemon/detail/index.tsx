@@ -6,29 +6,36 @@ import {
   usePokemonListWithSpcies,
 } from "../../../hooks/usePokemon";
 import { useChangeLanguage } from "../../../store";
-import { PokemonType } from "../../../types/pokemon";
+import type {
+  PokemonType,
+  PokemonNameData,
+  PokemonFlavorTextData,
+  PokemonGeneraData,
+} from "../../../types/pokemon";
 import TypeLabel from "../../navigation/TypeLable";
+import Evolution from "./ evolution";
 
 const cx = bind(style);
 
 function PokemonDetail() {
-  let params = useParams();
-  const { language } = useChangeLanguage();
-  const { data: pokemonSpcies } = usePokemonListWithSpcies(Number(params.id));
-  const { data: pokemonInfo } = usePokemonListDetail(pokemonSpcies?.name!);
+  const parameter = useParams();
 
-  console.log(pokemonSpcies);
+  const { language } = useChangeLanguage();
+  const { data: pokemonSpcies } = usePokemonListWithSpcies(
+    Number(parameter.id)
+  );
+  const { data: pokemonInfo } = usePokemonListDetail(pokemonSpcies?.name);
 
   const koreanNameData = pokemonSpcies?.names?.find(
-    (nameData: any) => nameData.language.name === "ko"
+    (nameData: PokemonNameData) => nameData.language.name === "ko"
   );
 
   const koreanPokemonData = pokemonSpcies?.genera.find(
-    (nameData: any) => nameData.language.name === "ko"
+    (nameData: PokemonGeneraData) => nameData.language.name === "ko"
   );
 
   const koreanDescription = pokemonSpcies?.flavor_text_entries.find(
-    (nameData: any) => nameData.language.name === "ko"
+    (nameData: PokemonFlavorTextData) => nameData.language.name === "ko"
   );
 
   return (
@@ -45,7 +52,7 @@ function PokemonDetail() {
           ? `${koreanNameData?.name} / ${koreanPokemonData?.genus}`
           : `${pokemonInfo?.name} / ${
               pokemonSpcies?.genera.find(
-                (nameData: any) => nameData.language.name === "en"
+                (nameData: PokemonGeneraData) => nameData.language.name === "en"
               )?.genus
             }`}
       </h1>
@@ -58,9 +65,11 @@ function PokemonDetail() {
         {language === "ko"
           ? koreanDescription?.flavor_text
           : pokemonSpcies?.flavor_text_entries.find(
-              (nameData: any) => nameData.language.name === "en"
+              (nameData: PokemonFlavorTextData) =>
+                nameData.language.name === "en"
             )?.flavor_text}
       </p>
+      <Evolution />
     </div>
   );
 }

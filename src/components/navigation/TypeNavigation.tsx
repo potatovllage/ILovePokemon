@@ -1,6 +1,6 @@
 import style from "./style.module.scss";
 import bind from "../../styles/cx";
-import { PokemonType } from "../../types/pokemon";
+import type { PokemonType } from "../../types/pokemon";
 import TypeLabel from "./TypeLable";
 import { typeListAll } from "../../config/typeListAll";
 

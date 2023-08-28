@@ -1,7 +1,7 @@
 import style from "./style.module.scss";
 import bind from "../../../styles/cx";
 import monsterball from "../../../assets/image/pokeball.png";
-import { PokemonType } from "../../../types/pokemon";
+import type { PokemonType, PokemonNameData } from "../../../types/pokemon";
 import TypeLabel from "../../navigation/TypeLable";
 import {
   usePokemonListDetail,
@@ -19,12 +19,12 @@ const cx = bind(style);
 function Item({ englishName }: PokemonNameProps) {
   const { language } = useChangeLanguage();
   const { data: pokemonItem } = usePokemonListDetail(englishName);
-  const { data: pokemonSpcies } = usePokemonListWithSpcies(pokemonItem?.id!);
+  const { data: pokemonSpcies } = usePokemonListWithSpcies(pokemonItem?.id);
 
   const navigage = useNavigate();
 
   const koreanNameData = pokemonSpcies?.names?.find(
-    (nameData: any) => nameData.language.name === "ko"
+    (nameData: PokemonNameData) => nameData.language.name === "ko"
   );
 
   return (
@@ -43,7 +43,7 @@ function Item({ englishName }: PokemonNameProps) {
         <img
           width={80}
           height={120}
-          src={String(pokemonItem?.sprites.front_default)}
+          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonItem?.id}.png`}
           alt={language === "ko" ? koreanNameData?.name : pokemonItem?.name}
         />
         <div className={cx(style.PokemonTypeLabel)}>
