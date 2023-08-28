@@ -6,7 +6,7 @@ import TypeLabel from "../../navigation/TypeLable";
 import {
   usePokemonListDetail,
   usePokemonListWithSpcies,
-} from "../../../hooks/usePokemonList";
+} from "../../../hooks/usePokemon";
 import { useChangeLanguage } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
@@ -44,7 +44,7 @@ function Item({ englishName }: PokemonNameProps) {
           width={80}
           height={120}
           src={String(pokemonItem?.sprites.front_default)}
-          alt={pokemonItem?.name}
+          alt={language === "ko" ? koreanNameData?.name : pokemonItem?.name}
         />
         <div className={cx(style.PokemonTypeLabel)}>
           {pokemonItem?.types.map((type: PokemonType, index: number) => (

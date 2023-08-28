@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import {
   usePokemonListDetail,
   usePokemonListWithSpcies,
-} from "../../../hooks/usePokemonList";
+} from "../../../hooks/usePokemon";
 import { useChangeLanguage } from "../../../store";
 import { PokemonType } from "../../../types/pokemon";
 import TypeLabel from "../../navigation/TypeLable";
