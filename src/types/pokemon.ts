@@ -54,10 +54,8 @@ export interface PokemonSpecies {
   };
 }
 export interface PokemonEvolvesProperties {
-  name: string;
-  level: number;
-  image?: string;
-  number?: string;
+  chain: EvolvesProperties;
+  id: number;
 }
 
 export interface EvolvesProperties {

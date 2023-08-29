@@ -24,7 +24,7 @@ function PokemonDetail() {
   const { data: pokemonSpcies } = usePokemonListWithSpcies(
     Number(parameter.id)
   );
-  const { data: pokemonInfo } = usePokemonListDetail(pokemonSpcies?.name);
+  const { data: pokemonItem } = usePokemonListDetail(pokemonSpcies?.name);
 
   const koreanNameData = pokemonSpcies?.names?.find(
     (nameData: PokemonNameData) => nameData.language.name === "ko"
@@ -44,20 +44,20 @@ function PokemonDetail() {
         className={cx(style.PokemonImage)}
         width={120}
         height={120}
-        src={String(pokemonInfo?.sprites.front_default)}
-        alt={pokemonInfo?.name}
+        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonItem?.id}.png`}
+        alt={language === "ko" ? koreanNameData?.name : pokemonItem?.name}
       />
       <h1 className="pokemonName">
         {language === "ko"
           ? `${koreanNameData?.name} / ${koreanPokemonData?.genus}`
-          : `${pokemonInfo?.name} / ${
+          : `${pokemonItem?.name} / ${
               pokemonSpcies?.genera.find(
                 (nameData: PokemonGeneraData) => nameData.language.name === "en"
               )?.genus
             }`}
       </h1>
       <div className={cx(style.PokemonTypeLabel)}>
-        {pokemonInfo?.types.map((type: PokemonType, index: number) => (
+        {pokemonItem?.types.map((type: PokemonType, index: number) => (
           <TypeLabel key={index} typeData={type} />
         ))}
       </div>

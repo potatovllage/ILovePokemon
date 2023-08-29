@@ -5,12 +5,12 @@ import {
   usePokemonEvolution,
   usePokemonListWithSpcies,
 } from "../../../../hooks/usePokemon";
-import { useChangeLanguage } from "../../../../store";
+//import { useChangeLanguage } from "../../../../store";
 
 const cx = bind(style);
 
 function Evolution() {
-  const { language } = useChangeLanguage();
+  // const { language } = useChangeLanguage();
   const parameter = useParams();
   const { data: pokemonSpcies } = usePokemonListWithSpcies(
     Number(parameter.id)
@@ -20,7 +20,7 @@ function Evolution() {
   );
   console.log(evolution, "!");
 
-  return <div className={cx(style.Wrapper)}>{}</div>;
+  return <div className={cx(style.Wrapper)}></div>;
 }
 
 export default Evolution;

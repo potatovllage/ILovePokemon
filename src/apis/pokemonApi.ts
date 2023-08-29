@@ -24,6 +24,6 @@ export const getPokemonListWithSpecies = async (id: number) => {
 
 export const getPokemonEvolution = async (url: string) => {
   const newUrl = url.split("v2")[1];
-  const response = await api.get<PokemonEvolvesProperties[]>(newUrl);
+  const response = await api.get<PokemonEvolvesProperties>(newUrl);
   return response.data;
 };
