@@ -1,5 +1,9 @@
 @import "../../styles/mixin";
 
+.TypeName {
+  margin: 0;
+}
+
 @include mobile {
   .TypeHeader {
     margin-top: 100px;
@@ -40,6 +44,35 @@
   }
 }
 
-.TypeName {
-  margin: 0;
+@include mobile {
+  .ListWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 3rem;
+  }
+}
+
+@include tablet {
+  .ListWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 3rem;
+  }
+}
+
+@include desktop {
+  .ListWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding-bottom: 3rem;
+  }
 }

@@ -1,21 +1,20 @@
 import { api } from "../config/axios";
 import type {
   PokemonAll,
-  PokemonBasic,
   PokemonListDetails,
   PokemonSpecies,
   PokemonEvolvesProperties,
   PokemonTypeAll,
 } from "../types/pokemon";
 
-export const getPokemonList = async (): Promise<PokemonBasic[]> => {
-  const { data } = await api.get<PokemonAll>("pokemon?limit=493");
+export const getPokemonList = async () => {
+  const { data } = await api.get<PokemonAll>(`pokemon?limit=435`);
   return data.results;
 };
 
 export const getPokemonTypeList = async (type: string) => {
   const response = await api.get<PokemonTypeAll>(
-    `https://pokeapi.co/api/v2/type/${type}?limit=493`
+    `https://pokeapi.co/api/v2/type/${type}`
   );
   return response.data.pokemon;
 };
