@@ -14,9 +14,15 @@ function TypeHeader() {
 
   return (
     <div className={cx(style.TypeHeader)}>
-      <h3 className={cx(style.TypeName)} style={{ color: backgroundColor }}>
+      <img
+        src={`/images/type/${parameter.type}.svg`}
+        alt={parameter.type}
+        width={40}
+        style={{ margin: "0 14px 0 0" }}
+      />
+      <h2 className={cx(style.TypeName)} style={{ color: backgroundColor }}>
         {language === "en" ? parameter.type : ConvertedText[parameter.type!]}
-      </h3>
+      </h2>
     </div>
   );
 }
