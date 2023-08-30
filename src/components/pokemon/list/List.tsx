@@ -1,20 +1,29 @@
 import style from "./style.module.scss";
 import bind from "../../../styles/cx";
 import Item from "./Item";
-import { usePokemonList } from "../../../hooks/usePokemon";
+import { usePokemonList, usePokemonTypeList } from "../../../hooks/usePokemon";
+
+interface PokemonTypeProps {
+  pokemonType?: string;
+}
 
 const cx = bind(style);
 
-function MainList() {
+function PokemonList({ pokemonType }: PokemonTypeProps) {
   const { data: pokemonList } = usePokemonList();
+  const { data: pokemonTypeList } = usePokemonTypeList(pokemonType!);
 
   return (
     <div className={cx(style.ListWrapper)}>
-      {pokemonList?.map((item) => (
-        <Item key={item.name} englishName={item.name} />
-      ))}
+      {pokemonType
+        ? pokemonTypeList?.map((item) => (
+            <Item key={item.pokemon.name} englishName={item.pokemon.name} />
+          ))
+        : pokemonList?.map((item) => (
+            <Item key={item.name} englishName={item.name} />
+          ))}
     </div>
   );
 }
 
-export default MainList;
+export default PokemonList;

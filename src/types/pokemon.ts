@@ -7,6 +7,16 @@ export interface PokemonAll {
   results: PokemonBasic[];
 }
 
+export interface PokemonTypeBasic {
+  pokemon: {
+    name: string;
+  };
+}
+
+export interface PokemonTypeAll {
+  pokemon: PokemonTypeBasic[];
+}
+
 export interface PokemonType {
   slot: number;
   type: {

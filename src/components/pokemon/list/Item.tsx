@@ -42,7 +42,7 @@ function Item({ englishName }: PokemonNameProps) {
       <div className={cx(style.PokemonItemContent)}>
         <img
           width={80}
-          height={120}
+          height={80}
           src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonItem?.id}.png`}
           alt={language === "ko" ? koreanNameData?.name : pokemonItem?.name}
         />
