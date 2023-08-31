@@ -11,6 +11,20 @@
     gap: 20px;
     padding-bottom: 3rem;
   }
+
+  .ScrollTopButton {
+    position: fixed;
+    right: 0;
+    bottom: 30px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+    background: white;
+
+    &:active {
+      background-color: gray;
+    }
+  }
 }
 
 @include tablet {
@@ -22,6 +36,23 @@
     flex-wrap: wrap;
     gap: 20px;
     padding-bottom: 3rem;
+    border-radius: 8px;
+  }
+
+  .ScrollTopButton {
+    cursor: pointer;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: white;
+
+    &:active {
+      background-color: gray;
+    }
   }
 }
 
@@ -34,6 +65,22 @@
     flex-wrap: wrap;
     gap: 20px;
     padding-bottom: 3rem;
+  }
+
+  .ScrollTopButton {
+    cursor: pointer;
+    position: fixed;
+    right: 30px;
+    bottom: 30px;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    border-radius: 8px;
+    background: white;
+
+    &:active {
+      background-color: gray;
+    }
   }
 }
 

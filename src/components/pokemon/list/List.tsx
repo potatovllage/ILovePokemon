@@ -47,21 +47,34 @@ function PokemonList() {
     }
   }, [fetchNextPage, hasNextPage, handleObserver]);
 
+  // eslint-disable-next-line unicorn/consistent-function-scoping
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   const pokemonList =
     pokemonData?.pages.flatMap((pageData) => pageData.results) || [];
 
   return (
-    <div className={cx(styles.ListWrapper)}>
-      {isLoading ? (
-        <LoadingProgress />
-      ) : (
-        <>
-          {pokemonList.map((item: PokemonBasic, index) => (
-            <Item key={index} englishName={item.name} />
-          ))}
-          <div ref={observerReference}></div>
-        </>
-      )}
+    <div style={{ display: "flex" }}>
+      <div className={cx(styles.ListWrapper)}>
+        {isLoading ? (
+          <LoadingProgress />
+        ) : (
+          <>
+            {pokemonList.map((item: PokemonBasic, index) => (
+              <Item key={index} englishName={item.name} />
+            ))}
+            <div ref={observerReference}></div>
+          </>
+        )}
+      </div>
+      <button onClick={scrollToTop} className={cx(styles.ScrollTopButton)}>
+        ⬆️
+      </button>
     </div>
   );
 }
