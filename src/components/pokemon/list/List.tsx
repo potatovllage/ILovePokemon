@@ -1,22 +1,66 @@
-import style from "./style.module.scss";
+import styles from "./style.module.scss";
 import bind from "../../../styles/cx";
 import Item from "./Item";
-import { usePokemonList } from "../../../hooks/usePokemon";
+import { useInfiniteQuery } from "react-query";
+import { getPokemonList } from "../../../apis/pokemonApi";
 import LoadingProgress from "../../loading";
+import { PokemonBasic } from "../../../types/pokemon";
+import { useRef, useCallback, useEffect } from "react";
 
-const cx = bind(style);
+const cx = bind(styles);
 
 function PokemonList() {
-  const { data: pokemonList, isFetching } = usePokemonList();
+  const observerReference = useRef(null);
+
+  const {
+    data: pokemonData,
+    isLoading,
+    hasNextPage,
+    fetchNextPage,
+    isFetchingNextPage,
+  } = useInfiniteQuery(
+    "pokemonList",
+    ({ pageParam: pageParameter = 0 }) => getPokemonList(pageParameter),
+    {
+      getNextPageParam: (lastPage) => {
+        const { next } = lastPage;
+        if (!next) return null;
+        return Number(new URL(next).searchParams.get("offset"));
+      },
+    }
+  );
+
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [target] = entries;
+      if (target.isIntersecting && hasNextPage && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    },
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
+
+  useEffect(() => {
+    if (observerReference.current) {
+      const observer = new IntersectionObserver(handleObserver);
+      observer.observe(observerReference.current);
+    }
+  }, [fetchNextPage, hasNextPage, handleObserver]);
+
+  const pokemonList =
+    pokemonData?.pages.flatMap((pageData) => pageData.results) || [];
 
   return (
-    <div className={cx(style.ListWrapper)}>
-      {isFetching ? (
+    <div className={cx(styles.ListWrapper)}>
+      {isLoading ? (
         <LoadingProgress />
       ) : (
-        pokemonList?.map((item) => (
-          <Item key={item.name} englishName={item.name} />
-        ))
+        <>
+          {pokemonList.map((item: PokemonBasic, index) => (
+            <Item key={index} englishName={item.name} />
+          ))}
+          <div ref={observerReference}></div>
+        </>
       )}
     </div>
   );

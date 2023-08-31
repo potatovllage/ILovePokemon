@@ -7,9 +7,14 @@ import type {
   PokemonTypeAll,
 } from "../types/pokemon";
 
-export const getPokemonList = async () => {
-  const { data } = await api.get<PokemonAll>(`pokemon?limit=435`);
-  return data.results;
+export const getPokemonList = async (page: number) => {
+  const { data } = await api.get<PokemonAll>(`pokemon`, {
+    params: {
+      limit: 30,
+      offset: page,
+    },
+  });
+  return data;
 };
 
 export const getPokemonTypeList = async (type: string) => {

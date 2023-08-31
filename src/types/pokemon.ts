@@ -4,6 +4,7 @@ export interface PokemonBasic {
 }
 
 export interface PokemonAll {
+  next: string;
   results: PokemonBasic[];
 }
 

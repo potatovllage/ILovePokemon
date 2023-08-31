@@ -3,6 +3,7 @@
 // main list
 @include mobile {
   .ListWrapper {
+    overflow: auto;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -14,6 +15,7 @@
 
 @include tablet {
   .ListWrapper {
+    overflow: auto;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -25,6 +27,7 @@
 
 @include desktop {
   .ListWrapper {
+    overflow: auto;
     width: 100%;
     display: flex;
     justify-content: center;
