@@ -14,7 +14,7 @@ function PokemonList() {
 
   const {
     data: pokemonData,
-    isLoading,
+    isFetching,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
@@ -61,7 +61,7 @@ function PokemonList() {
   return (
     <div style={{ display: "flex" }}>
       <div className={cx(styles.ListWrapper)}>
-        {isLoading ? (
+        {isFetching ? (
           <LoadingProgress />
         ) : (
           <>

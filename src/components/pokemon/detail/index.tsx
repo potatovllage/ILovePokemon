@@ -13,7 +13,6 @@ import type {
   PokemonGeneraData,
 } from "../../../types/pokemon";
 import TypeLabel from "../../navigation/TypeLable";
-import Evolution from "./ evolution";
 
 const cx = bind(style);
 
@@ -69,7 +68,6 @@ function PokemonDetail() {
                 nameData.language.name === "en"
             )?.flavor_text}
       </p>
-      <Evolution />
     </div>
   );
 }
