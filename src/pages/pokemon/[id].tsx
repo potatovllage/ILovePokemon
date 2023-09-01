@@ -1,16 +1,13 @@
-import style from "../../styles/pages/detail.module.scss";
-import bind from "../../styles/cx";
 import PokemonDetail from "../../components/pokemon/detail";
 import Header from "../../components/header";
-
-const cx = bind(style);
+import Wrapper from "../../common/Wrapper";
 
 function PokemonDetailPage() {
   return (
-    <div className={cx(style.Wrapper)}>
+    <Wrapper>
       <Header />
       <PokemonDetail />
-    </div>
+    </Wrapper>
   );
 }
 

@@ -1,18 +1,15 @@
-import style from "../../styles/pages/type.module.scss";
-import bind from "../../styles/cx";
 import Header from "../../components/header";
 import TypeHeader from "../../components/type/TypeHeader";
 import PokemonTypeList from "../../components/type/PokemonTypeList";
-
-const cx = bind(style);
+import Wrapper from "../../common/Wrapper";
 
 function TypePage() {
   return (
-    <div className={cx(style.Wrapper)}>
+    <Wrapper>
       <Header />
       <TypeHeader />
       <PokemonTypeList />
-    </div>
+    </Wrapper>
   );
 }
 
