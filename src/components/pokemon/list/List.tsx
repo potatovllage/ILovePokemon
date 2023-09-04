@@ -14,7 +14,7 @@ function PokemonList() {
 
   const {
     data: pokemonData,
-    isFetching,
+    status,
     hasNextPage,
     fetchNextPage,
     isFetchingNextPage,
@@ -61,16 +61,15 @@ function PokemonList() {
   return (
     <div style={{ display: "flex" }}>
       <div className={cx(styles.ListWrapper)}>
-        {isFetching ? (
-          <LoadingProgress />
-        ) : (
+        {status === "loading" && <LoadingProgress />}
+        {status === "success" && (
           <>
             {pokemonList.map((item: PokemonBasic, index) => (
               <Item key={index} englishName={item.name} />
             ))}
-            <div ref={observerReference}></div>
           </>
         )}
+        <div ref={observerReference} />
       </div>
       <button onClick={scrollToTop} className={cx(styles.ScrollTopButton)}>
         ⬆️
