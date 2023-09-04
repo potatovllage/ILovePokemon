@@ -2,9 +2,10 @@
   font-family: "galmuri9";
   font-style: normal;
   font-weight: normal;
+  font-display: swap;
   src: url("./Galmuri9.woff") format("woff");
 }
 
 body {
-  font-family: "galmuri9";
+  font-family: "galmuri9, sans-serif";
 }
