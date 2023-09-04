@@ -1,6 +1,6 @@
 import PokemonDetail from "../../components/pokemon/detail";
 import Header from "../../components/header";
-import Wrapper from "../../common/Wrapper";
+import Wrapper from "../../components/common/Wrapper";
 
 function PokemonDetailPage() {
   return (
