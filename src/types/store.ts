@@ -1,6 +1,6 @@
 export interface ChangeLanguageState {
   language: string;
-  chanegLanguage: (lang: string) => void;
+  changeLanguage: (lang: string) => void;
 }
 
 export interface InputState {

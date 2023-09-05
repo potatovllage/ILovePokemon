@@ -6,6 +6,7 @@ import { getPokemonList } from "../../../apis/pokemonApi";
 import { PokemonBasic } from "../../../types/pokemon";
 import { useRef, useCallback, useEffect } from "react";
 import { useSearchPokemonStore } from "../../../store";
+import ScrollTopButton from "../../common/scrollTop";
 
 const cx = bind(styles);
 
@@ -49,15 +50,6 @@ function PokemonList() {
     }
   }, [fetchNextPage, hasNextPage, handleObserver]);
 
-  // utils로 이동
-  // eslint-disable-next-line unicorn/consistent-function-scoping
-  const scrollToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
-
   const pokemonList =
     pokemonData?.pages.flatMap((pageData) => pageData.results) || [];
 
@@ -74,9 +66,7 @@ function PokemonList() {
 
         <div ref={observerReference} />
       </div>
-      <button onClick={scrollToTop} className={cx(styles.ScrollTopButton)}>
-        ⬆️
-      </button>
+      <ScrollTopButton />
     </div>
   );
 }

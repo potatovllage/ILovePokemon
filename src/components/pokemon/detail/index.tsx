@@ -13,6 +13,7 @@ import type {
   PokemonGeneraData,
 } from "../../../types/pokemon";
 import TypeLabel from "../../navigation/TypeLable";
+import PokemonImage from "../../common/pokemonImage";
 
 const cx = bind(style);
 
@@ -39,13 +40,15 @@ function PokemonDetail() {
 
   return (
     <div className={cx(style.Wrapper)}>
-      <img
-        className={cx(style.PokemonImage)}
-        width={120}
-        height={120}
-        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonItem?.id}.png`}
-        alt={language === "ko" ? koreanNameData?.name : pokemonItem?.name}
-      />
+      <div className={cx(style.PokemonImage)}>
+        <PokemonImage
+          width={120}
+          height={120}
+          pokemonId={pokemonItem?.id}
+          koreaName={koreanNameData?.name}
+          name={pokemonItem?.name}
+        />
+      </div>
       <h1 className="pokemonName">
         {language === "ko"
           ? `${koreanNameData?.name} / ${koreanPokemonData?.genus}`

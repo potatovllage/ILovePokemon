@@ -9,6 +9,7 @@ import {
 } from "../../../hooks/usePokemon";
 import { useChangeLanguageStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
+import PokemonImage from "../../common/pokemonImage";
 
 interface PokemonNameProps {
   name: string;
@@ -40,11 +41,12 @@ function Item({ name }: PokemonNameProps) {
         <p className={cx(style.PokemonNumber)}>No.{pokemonItem?.id}</p>
       </div>
       <div className={cx(style.PokemonItemContent)}>
-        <img
+        <PokemonImage
           width={80}
           height={80}
-          src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pokemonItem?.id}.png`}
-          alt={language === "ko" ? koreanNameData?.name : pokemonItem?.name}
+          pokemonId={pokemonItem?.id}
+          koreaName={koreanNameData?.name}
+          name={pokemonItem?.name}
         />
         <div className={cx(style.PokemonTypeLabel)}>
           {pokemonItem?.types.map((type: PokemonType, index: number) => (

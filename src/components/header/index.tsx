@@ -9,7 +9,7 @@ const cx = bind(style);
 
 function Header() {
   const navigate = useNavigate();
-  const { chanegLanguage, language } = useChangeLanguageStore();
+  const { changeLanguage, language } = useChangeLanguageStore();
 
   return (
     <header className={cx(style.Wrapper)}>
@@ -22,14 +22,14 @@ function Header() {
           <img height={24} src={globe} alt="globe" />
           <p
             className={cx(style.Language)}
-            onClick={() => chanegLanguage("en")}
+            onClick={() => changeLanguage("en")}
           >
             English
           </p>
           <p>|</p>
           <p
             className={cx(style.Language)}
-            onClick={() => chanegLanguage("ko")}
+            onClick={() => changeLanguage("ko")}
           >
             한국어
           </p>

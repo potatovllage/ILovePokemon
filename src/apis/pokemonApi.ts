@@ -7,8 +7,16 @@ import type {
   PokemonTypeAll,
 } from "../types/pokemon";
 
-export const getPokemonList = async (page: number) => {
-  const { data } = await api.get<PokemonAll>(`pokemon`, {
+interface PokemonList {
+  page: number;
+  pokemon?: string;
+}
+
+export const getPokemonList = async ({ page, pokemon }: PokemonList) => {
+  let apiURL = "pokemon";
+  if (pokemon) apiURL = `/pokemon/${pokemon}`;
+
+  const { data } = await api.get<PokemonAll>(`${apiURL}`, {
     params: {
       limit: 30,
       offset: page,
@@ -37,5 +45,10 @@ export const getPokemonListWithSpecies = async (id: number) => {
 export const getPokemonEvolution = async (url: string) => {
   const newUrl = url.split("v2")[1];
   const response = await api.get<PokemonEvolvesProperties[]>(newUrl);
+  return response.data;
+};
+
+export const getPokemonSearch = async (pokemon: string) => {
+  const response = await api.get(`pokemon/${pokemon}`);
   return response.data;
 };

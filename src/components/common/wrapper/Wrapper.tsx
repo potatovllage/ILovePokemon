@@ -1,6 +1,6 @@
 import type { ReactNode } from "react";
 import style from "./style.module.scss";
-import bind from "../../styles/cx";
+import bind from "../../../styles/cx";
 
 interface ElementProps {
   children: ReactNode;
