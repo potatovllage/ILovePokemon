@@ -11,14 +11,14 @@ import { useChangeLanguageStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
 interface PokemonNameProps {
-  englishName: string;
+  name: string;
 }
 
 const cx = bind(style);
 
-function Item({ englishName }: PokemonNameProps) {
+function Item({ name }: PokemonNameProps) {
   const { language } = useChangeLanguageStore();
-  const { data: pokemonItem } = usePokemonListDetail(englishName);
+  const { data: pokemonItem } = usePokemonListDetail(name);
   const { data: pokemonSpcies } = usePokemonListWithSpcies(pokemonItem?.id);
 
   const navigage = useNavigate();
@@ -35,7 +35,7 @@ function Item({ englishName }: PokemonNameProps) {
       <div className={cx(style.ItemHeader)}>
         <div className={cx(style.PokemonInfo)}>
           <img height={30} src={monsterball} alt="monster ball" />
-          <h1>{language === "ko" ? koreanNameData?.name : englishName}</h1>
+          <h1>{language === "ko" ? koreanNameData?.name : name}</h1>
         </div>
         <p className={cx(style.PokemonNumber)}>No.{pokemonItem?.id}</p>
       </div>

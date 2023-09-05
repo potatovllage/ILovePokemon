@@ -67,7 +67,7 @@ function PokemonList() {
         {status === "success" && (
           <>
             {pokemonList.map((item: PokemonBasic, index) => (
-              <Item key={index} englishName={item.name} />
+              <Item key={index} name={item.name} />
             ))}
           </>
         )}
