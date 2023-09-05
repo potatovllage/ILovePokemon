@@ -7,7 +7,7 @@ import {
   usePokemonListDetail,
   usePokemonListWithSpcies,
 } from "../../../hooks/usePokemon";
-import { useChangeLanguage } from "../../../store";
+import { useChangeLanguageStore } from "../../../store";
 import { useNavigate } from "react-router-dom";
 
 interface PokemonNameProps {
@@ -17,7 +17,7 @@ interface PokemonNameProps {
 const cx = bind(style);
 
 function Item({ englishName }: PokemonNameProps) {
-  const { language } = useChangeLanguage();
+  const { language } = useChangeLanguageStore();
   const { data: pokemonItem } = usePokemonListDetail(englishName);
   const { data: pokemonSpcies } = usePokemonListWithSpcies(pokemonItem?.id);
 

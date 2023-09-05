@@ -2,14 +2,14 @@ import style from "./style.module.scss";
 import bind from "../../styles/cx";
 import { useParams } from "react-router-dom";
 import { BackgroundColor } from "../../utils/pokemonTypeColor";
-import { useChangeLanguage } from "../../store";
+import { useChangeLanguageStore } from "../../store";
 import { ConvertedText } from "../../utils/pokemonTypeText";
 
 const cx = bind(style);
 
 function TypeHeader() {
   const parameter = useParams();
-  const { language } = useChangeLanguage();
+  const { language } = useChangeLanguageStore();
   const backgroundColor = BackgroundColor[parameter.type!];
 
   return (

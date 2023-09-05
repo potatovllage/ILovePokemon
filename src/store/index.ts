@@ -1,7 +1,12 @@
 import { create } from "zustand";
-import type { ChangeLanguageState } from "../types/store";
+import type { ChangeLanguageState, InputState } from "../types/store";
 
-export const useChangeLanguage = create<ChangeLanguageState>((set) => ({
+export const useChangeLanguageStore = create<ChangeLanguageState>((set) => ({
   language: "ko",
-  setChanegLanguage: (lang) => set({ language: lang }),
+  chanegLanguage: (lang) => set({ language: lang }),
+}));
+
+export const useSearchPokemonStore = create<InputState>((set) => ({
+  searchPokemon: "",
+  changeSearchPokemon: (text) => set({ searchPokemon: text }),
 }));

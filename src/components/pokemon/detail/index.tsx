@@ -5,7 +5,7 @@ import {
   usePokemonListDetail,
   usePokemonListWithSpcies,
 } from "../../../hooks/usePokemon";
-import { useChangeLanguage } from "../../../store";
+import { useChangeLanguageStore } from "../../../store";
 import type {
   PokemonType,
   PokemonNameData,
@@ -19,7 +19,7 @@ const cx = bind(style);
 function PokemonDetail() {
   const parameter = useParams();
 
-  const { language } = useChangeLanguage();
+  const { language } = useChangeLanguageStore();
   const { data: pokemonSpcies } = usePokemonListWithSpcies(
     Number(parameter.id)
   );

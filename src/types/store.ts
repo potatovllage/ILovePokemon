@@ -1,4 +1,9 @@
 export interface ChangeLanguageState {
   language: string;
-  setChanegLanguage: (lang: string) => void;
+  chanegLanguage: (lang: string) => void;
+}
+
+export interface InputState {
+  searchPokemon: string;
+  changeSearchPokemon: (text: string) => void;
 }

@@ -4,7 +4,7 @@ import monsterBall from "../../assets/image/MonsterBall.png";
 
 const cx = bind(style);
 
-function LoadingProgress() {
+function LoadingScreen() {
   return (
     <div className={cx(style.LoadingContainer)}>
       <img className={cx(style.MonsterBall)} src={monsterBall} alt="loading" />
@@ -12,4 +12,4 @@ function LoadingProgress() {
   );
 }
 
-export default LoadingProgress;
+export default LoadingScreen;

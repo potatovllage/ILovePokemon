@@ -3,18 +3,18 @@ import bind from "../../styles/cx";
 import monsterBall from "../../assets/image/pokeball.png";
 import globe from "../../assets/image/Globe.png";
 import { useNavigate } from "react-router-dom";
-import { useChangeLanguage } from "../../store";
+import { useChangeLanguageStore } from "../../store";
 
 const cx = bind(style);
 
 function Header() {
-  const naviagate = useNavigate();
-  const { setChanegLanguage, language } = useChangeLanguage();
+  const navigate = useNavigate();
+  const { chanegLanguage, language } = useChangeLanguageStore();
 
   return (
     <header className={cx(style.Wrapper)}>
       <div className={cx(style.HeaderContainer)}>
-        <div onClick={() => naviagate("/")} className={cx(style.LogoContainer)}>
+        <div onClick={() => navigate("/")} className={cx(style.LogoContainer)}>
           <img height={80} src={monsterBall} alt="mainlogo" />
           <h1>{language === "ko" ? "포켓몬 도감" : "Pokemon Encyclopedia"}</h1>
         </div>
@@ -22,14 +22,14 @@ function Header() {
           <img height={24} src={globe} alt="globe" />
           <p
             className={cx(style.Language)}
-            onClick={() => setChanegLanguage("en")}
+            onClick={() => chanegLanguage("en")}
           >
             English
           </p>
           <p>|</p>
           <p
             className={cx(style.Language)}
-            onClick={() => setChanegLanguage("ko")}
+            onClick={() => chanegLanguage("ko")}
           >
             한국어
           </p>

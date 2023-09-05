@@ -3,13 +3,14 @@ import bind from "../../../styles/cx";
 import Item from "./Item";
 import { useInfiniteQuery } from "react-query";
 import { getPokemonList } from "../../../apis/pokemonApi";
-import LoadingProgress from "../../loading";
 import { PokemonBasic } from "../../../types/pokemon";
 import { useRef, useCallback, useEffect } from "react";
+import { useSearchPokemonStore } from "../../../store";
 
 const cx = bind(styles);
 
 function PokemonList() {
+  const { searchPokemon } = useSearchPokemonStore();
   const observerReference = useRef(null);
 
   const {
@@ -17,14 +18,15 @@ function PokemonList() {
     status,
     hasNextPage,
     fetchNextPage,
-    isFetchingNextPage,
+    isFetching,
   } = useInfiniteQuery(
-    "pokemonList",
-    ({ pageParam: pageParameter = 0 }) => getPokemonList(pageParameter),
+    ["pokemonList", searchPokemon],
+    ({ pageParam: pageParameter = 0 }) =>
+      getPokemonList({ page: pageParameter, pokemon: searchPokemon }),
     {
       getNextPageParam: (lastPage) => {
         const { next } = lastPage;
-        if (!next) return null;
+        if (!next) return;
         return Number(new URL(next).searchParams.get("offset"));
       },
     }
@@ -33,11 +35,11 @@ function PokemonList() {
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
       const [target] = entries;
-      if (target.isIntersecting && hasNextPage && !isFetchingNextPage) {
+      if (target.isIntersecting && hasNextPage) {
         fetchNextPage();
       }
     },
-    [fetchNextPage, hasNextPage, isFetchingNextPage]
+    [fetchNextPage, hasNextPage, isFetching]
   );
 
   useEffect(() => {
@@ -47,6 +49,7 @@ function PokemonList() {
     }
   }, [fetchNextPage, hasNextPage, handleObserver]);
 
+  // utils로 이동
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const scrollToTop = () => {
     window.scrollTo({
@@ -61,7 +64,6 @@ function PokemonList() {
   return (
     <div style={{ display: "flex" }}>
       <div className={cx(styles.ListWrapper)}>
-        {status === "loading" && <LoadingProgress />}
         {status === "success" && (
           <>
             {pokemonList.map((item: PokemonBasic, index) => (
@@ -69,6 +71,7 @@ function PokemonList() {
             ))}
           </>
         )}
+
         <div ref={observerReference} />
       </div>
       <button onClick={scrollToTop} className={cx(styles.ScrollTopButton)}>

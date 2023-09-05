@@ -2,7 +2,7 @@ import { ConvertedText } from "../../utils/pokemonTypeText";
 import { BackgroundColor } from "../../utils/pokemonTypeColor";
 import type { PokemonType } from "../../types/pokemon";
 import { useNavigate } from "react-router-dom";
-import { useChangeLanguage } from "../../store";
+import { useChangeLanguageStore } from "../../store";
 import bind from "../../styles/cx";
 import style from "./style.module.scss";
 
@@ -14,7 +14,7 @@ const cx = bind(style);
 
 const TypeLabel = ({ typeData }: PockemonTypePorps) => {
   const navigate = useNavigate();
-  const { language } = useChangeLanguage();
+  const { language } = useChangeLanguageStore();
 
   const backgroundColor = BackgroundColor[typeData?.type?.name];
 
