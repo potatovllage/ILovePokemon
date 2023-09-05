@@ -1,54 +1,22 @@
 import styles from "./style.module.scss";
 import bind from "../../../styles/cx";
 import Item from "./Item";
-import { useInfiniteQuery } from "react-query";
-import { getPokemonList } from "../../../apis/pokemonApi";
 import { PokemonBasic } from "../../../types/pokemon";
-import { useRef, useCallback, useEffect } from "react";
-import { useSearchPokemonStore } from "../../../store";
-import ScrollTopButton from "../../common/scrollTop";
+import useInfinityQueryPokemonList from "../../../hooks/queryPokemonList";
+import LoadingScreen from "../../loading";
+import InfinityScrollTrigger from "../../common/scrollTrigger";
 
 const cx = bind(styles);
 
 function PokemonList() {
-  const { searchPokemon } = useSearchPokemonStore();
-  const observerReference = useRef(null);
-
   const {
     data: pokemonData,
-    status,
+    isFetching,
     hasNextPage,
     fetchNextPage,
-    isFetching,
-  } = useInfiniteQuery(
-    ["pokemonList", searchPokemon],
-    ({ pageParam: pageParameter = 0 }) =>
-      getPokemonList({ page: pageParameter, pokemon: searchPokemon }),
-    {
-      getNextPageParam: (lastPage) => {
-        const { next } = lastPage;
-        if (!next) return;
-        return Number(new URL(next).searchParams.get("offset"));
-      },
-    }
-  );
-
-  const handleObserver = useCallback(
-    (entries: IntersectionObserverEntry[]) => {
-      const [target] = entries;
-      if (target.isIntersecting && hasNextPage) {
-        fetchNextPage();
-      }
-    },
-    [fetchNextPage, hasNextPage, isFetching]
-  );
-
-  useEffect(() => {
-    if (observerReference.current) {
-      const observer = new IntersectionObserver(handleObserver);
-      observer.observe(observerReference.current);
-    }
-  }, [fetchNextPage, hasNextPage, handleObserver]);
+    isFetchingNextPage,
+  } = useInfinityQueryPokemonList();
+  const showLoadingScreen = isFetching && !isFetchingNextPage;
 
   const pokemonList =
     pokemonData?.pages.flatMap((pageData) => pageData.results) || [];
@@ -56,17 +24,21 @@ function PokemonList() {
   return (
     <div style={{ display: "flex" }}>
       <div className={cx(styles.ListWrapper)}>
-        {status === "success" && (
+        {showLoadingScreen ? (
+          <LoadingScreen />
+        ) : (
           <>
             {pokemonList.map((item: PokemonBasic, index) => (
               <Item key={index} name={item.name} />
             ))}
+            <InfinityScrollTrigger
+              callback={fetchNextPage}
+              enabled={hasNextPage && !isFetching}
+              options={{ rootMargin: "100px 0px 0px 0px" }}
+            />
           </>
         )}
-
-        <div ref={observerReference} />
       </div>
-      <ScrollTopButton />
     </div>
   );
 }
