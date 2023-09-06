@@ -3,7 +3,7 @@ import bind from "../../../styles/cx";
 import { useParams } from "react-router-dom";
 import {
   usePokemonListDetail,
-  usePokemonListWithSpcies,
+  usePokemonListWithSpecies,
 } from "../../../hooks/usePokemon";
 import { useChangeLanguageStore } from "../../../store";
 import type {
@@ -21,20 +21,20 @@ function PokemonDetail() {
   const parameter = useParams();
 
   const { language } = useChangeLanguageStore();
-  const { data: pokemonSpcies } = usePokemonListWithSpcies(
+  const { data: pokemonSpecies } = usePokemonListWithSpecies(
     Number(parameter.id)
   );
-  const { data: pokemonItem } = usePokemonListDetail(pokemonSpcies?.name);
+  const { data: pokemonItem } = usePokemonListDetail(pokemonSpecies?.name);
 
-  const koreanNameData = pokemonSpcies?.names?.find(
+  const koreanNameData = pokemonSpecies?.names?.find(
     (nameData: PokemonNameData) => nameData.language.name === "ko"
   );
 
-  const koreanPokemonData = pokemonSpcies?.genera.find(
+  const koreanPokemonData = pokemonSpecies?.genera.find(
     (nameData: PokemonGeneraData) => nameData.language.name === "ko"
   );
 
-  const koreanDescription = pokemonSpcies?.flavor_text_entries.find(
+  const koreanDescription = pokemonSpecies?.flavor_text_entries.find(
     (nameData: PokemonFlavorTextData) => nameData.language.name === "ko"
   );
 
@@ -53,7 +53,7 @@ function PokemonDetail() {
         {language === "ko"
           ? `${koreanNameData?.name} / ${koreanPokemonData?.genus}`
           : `${pokemonItem?.name} / ${
-              pokemonSpcies?.genera.find(
+              pokemonSpecies?.genera.find(
                 (nameData: PokemonGeneraData) => nameData.language.name === "en"
               )?.genus
             }`}
@@ -66,7 +66,7 @@ function PokemonDetail() {
       <p className="pokemonDescription">
         {language === "ko"
           ? koreanDescription?.flavor_text
-          : pokemonSpcies?.flavor_text_entries.find(
+          : pokemonSpecies?.flavor_text_entries.find(
               (nameData: PokemonFlavorTextData) =>
                 nameData.language.name === "en"
             )?.flavor_text}

@@ -18,10 +18,14 @@ export const usePokemonListDetail = (name?: string) => {
   );
 };
 
-export const usePokemonListWithSpcies = (id?: number) => {
-  return useQuery(["pokemonSpcies", id], () => getPokemonListWithSpecies(id!), {
-    enabled: !!id,
-  });
+export const usePokemonListWithSpecies = (id?: number) => {
+  return useQuery(
+    ["pokemonSpecies", id],
+    () => getPokemonListWithSpecies(id!),
+    {
+      enabled: !!id,
+    }
+  );
 };
 
 export const usePokemonEvolution = (url: string) => {

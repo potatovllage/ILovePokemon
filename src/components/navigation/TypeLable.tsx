@@ -6,13 +6,13 @@ import { useChangeLanguageStore } from "../../store";
 import bind from "../../styles/cx";
 import style from "./style.module.scss";
 
-interface PockemonTypePorps {
+interface PokemonTypeProps {
   typeData: PokemonType;
 }
 
 const cx = bind(style);
 
-const TypeLabel = ({ typeData }: PockemonTypePorps) => {
+const TypeLabel = ({ typeData }: PokemonTypeProps) => {
   const navigate = useNavigate();
   const { language } = useChangeLanguageStore();
 

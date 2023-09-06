@@ -14,7 +14,7 @@ function Search() {
 
   // eslint-disable-next-line unicorn/consistent-function-scoping
   const getLanguagePlaceholder = () => {
-    if (language === "en") return "Seach Pokemon With Name or Id!";
+    if (language === "en") return "Search Pokemon With Name or Id!";
     else if (language === "ko")
       return "포켓몬 이름 또는 아이디를 입력해주세요!";
   };
