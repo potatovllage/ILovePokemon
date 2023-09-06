@@ -5,18 +5,11 @@ import type {
   PokemonSpecies,
   PokemonEvolvesProperties,
   PokemonTypeAll,
+  PokemonBasic,
 } from "../types/pokemon";
 
-interface PokemonList {
-  page: number;
-  pokemon?: string;
-}
-
-export const getPokemonList = async ({ page, pokemon }: PokemonList) => {
-  let apiURL = "pokemon";
-  if (pokemon) apiURL = `/pokemon/${pokemon}`;
-
-  const { data } = await api.get<PokemonAll>(`${apiURL}`, {
+export const getPokemonList = async (page: number) => {
+  const { data } = await api.get<PokemonAll>(`pokemon`, {
     params: {
       limit: 30,
       offset: page,
@@ -25,10 +18,13 @@ export const getPokemonList = async ({ page, pokemon }: PokemonList) => {
   return data;
 };
 
+export const getSearchPokemon = async (search: string) => {
+  const { data } = await api.get<PokemonBasic>(`pokemon/${search}`);
+  return data;
+};
+
 export const getPokemonTypeList = async (type: string) => {
-  const response = await api.get<PokemonTypeAll>(
-    `https://pokeapi.co/api/v2/type/${type}`
-  );
+  const response = await api.get<PokemonTypeAll>(`type/${type}`);
   return response.data.pokemon;
 };
 

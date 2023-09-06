@@ -6,9 +6,8 @@ export default function useInfinityQueryPokemonList() {
   const { searchPokemon } = useSearchPokemonStore();
 
   return useInfiniteQuery(
-    "pokemonList",
-    ({ pageParam: pageParameter = 0 }) =>
-      getPokemonList({ page: pageParameter, pokemon: searchPokemon }),
+    ["pokemonList", searchPokemon],
+    ({ pageParam: pageParameter = 0 }) => getPokemonList(pageParameter),
     {
       getNextPageParam: (lastPage) => {
         const { next } = lastPage;

@@ -4,6 +4,7 @@ import {
   getPokemonListWithSpecies,
   getPokemonEvolution,
   getPokemonTypeList,
+  getSearchPokemon,
 } from "../apis/pokemonApi";
 
 export const usePokemonTypeList = (type: string) => {
@@ -26,6 +27,10 @@ export const usePokemonListWithSpecies = (id?: number) => {
       enabled: !!id,
     }
   );
+};
+
+export const useSearchPokemon = (search: string) => {
+  return useQuery(["searchPokemon", search], () => getSearchPokemon(search));
 };
 
 export const usePokemonEvolution = (url: string) => {
